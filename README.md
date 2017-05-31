@@ -54,7 +54,8 @@ cd ~/myproject
 git clone git-url src
 ```
 
-Edit the `settings.py` file with your editor of choice:
+### 4. Config Django Project
+Edit the `settings.py` file:
 
 ```
 DATABASES = {
@@ -67,4 +68,37 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+```
+
+```bash
+~/myproject/src/manage.py makemigrations
+~/myproject/src/manage.py migrate
+~/myproject/src/manage.py createsuperuser
+~/myproject/src/manage.py collectstatic
+```
+
+### 5. Create a Gunicorn systemd Service File
+
+`sudo nano /etc/systemd/system/gunicorn.service`
+
+```bash
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=hoso
+Group=www-data
+WorkingDirectory=/home/user/myproject/src
+ExecStart=/home/user/myproject/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/user/myproject/src/myproject.sock myproject.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
 ```

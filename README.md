@@ -57,7 +57,7 @@ git clone git-url src
 ### 4. Config Django Project
 Edit the `settings.py` file:
 
-```
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

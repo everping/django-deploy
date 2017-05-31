@@ -50,4 +50,21 @@ pip install django gunicorn mysql-python
 ### 3. Clone Django Project
 
 ```bash
+cd ~/myproject
+git clone git-url src
+```
+
+Edit the `settings.py` file with your editor of choice:
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'testdb',
+        'USER': 'test',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    }
+}
 ```

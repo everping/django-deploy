@@ -122,11 +122,11 @@ server {
         proxy_pass http://unix:/home/user/myproject/src/myproject.sock;
     }
 }
-
 ```
+
+```bash
 sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
 sudo systemctl restart nginx
-
 ```
 
-```
+

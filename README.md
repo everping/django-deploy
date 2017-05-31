@@ -102,3 +102,31 @@ WantedBy=multi-user.target
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn
 ```
+
+### 6. Configure Nginx to Proxy Pass to Gunicorn
+
+`sudo nano /etc/nginx/sites-available/myproject`
+
+```
+server {
+    listen 80;
+    server_name yourdomain.com;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    
+    location /static/ {
+        root /home/user/myproject/src/myproject;
+    }
+    
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/user/myproject/src/myproject.sock;
+    }
+}
+
+```
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
+sudo systemctl restart nginx
+
+```
+
+```

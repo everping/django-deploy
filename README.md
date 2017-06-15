@@ -4,14 +4,14 @@ If you are using Python 2, type:
 
 ```bash
 sudo apt-get update
-sudo apt-get install python-pip python-dev mysql-server mysql-client nginx
+sudo apt-get install python-pip python-dev mysql-server mysql-client libmysqlclient-dev nginx
 ```
 
 If you are using Django with Python 3, type:
 
 ```bash
 sudo apt-get update
-sudo apt-get install python3-pip python3-dev mysql-server mysql-client nginx
+sudo apt-get install python3-pip python3-dev mysql-server mysql-client libmysqlclient-dev nginx
 ```
 
 ### 2: Configure MySQL

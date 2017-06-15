@@ -19,6 +19,7 @@ sudo apt-get install python3-pip python3-dev mysql-server mysql-client nginx
 ```bash
 mysql -u root -p
 CREATE DATABASE testdb;
+ALTER DATABASE testdb CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON testdb.* TO 'test'@'localhost';
 ```

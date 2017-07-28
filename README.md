@@ -90,7 +90,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=hoso
+User=user
 Group=www-data
 WorkingDirectory=/home/user/myproject/src
 ExecStart=/home/user/myproject/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/user/myproject/src/myproject.sock myproject.wsgi:application
